@@ -1,8 +1,7 @@
 import isEmpty from 'lodash/isEmpty';
 
 export default function validateInput(data) {
-  let errorsInput = {};
-
+  let errorsInput = {};  
   if (data.street === "") {
     errorsInput.street = 'This field is required';
   }

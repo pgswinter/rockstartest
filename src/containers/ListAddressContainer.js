@@ -20,6 +20,7 @@ class App extends Component {
       errors: {}
     };
 		this.onChange = this.onChange.bind(this);
+    this.isValid = this.isValid.bind(this)
 	}
 
   componentWillMount() {
@@ -76,6 +77,12 @@ class App extends Component {
 	 this.setState({[e.target.name]:e.target.value});
   }
 
+  onChangeValidate(e){
+   this.setState({
+
+   }) 
+  }
+
   isValid() {
       const { errorsInput,isValidInput } = validateInput(this.state);
       if (!isValidInput) {
@@ -88,9 +95,9 @@ class App extends Component {
   }
 
   onSubmit(values) {
-    // if(this.isValid()){
+    if(this.isValid()){
       this.props.savePost(values).then(this.props.dispatch(reset('NewPost')));  
-    // }
+    }
   }
 
   render() {
@@ -114,6 +121,7 @@ class App extends Component {
                       label="Street"
                       class="footer-street form-control"
                       value={this.state.street}
+                      onChange={this.onChange}
                     />
                     {errors.street && <p className="error">{errors.street}</p>}
                   </div>
@@ -125,6 +133,7 @@ class App extends Component {
                       label="Ward"
                       class="footer-ward form-control"
                       value={this.state.ward}
+                      onChange={this.onChange}
                     />
                     {errors.ward && <p className="error">{errors.ward}</p>}
                   </div>
@@ -136,6 +145,7 @@ class App extends Component {
                       label="District"
                       class="footer-district form-control"
                       value={this.state.district}
+                      onChange={this.onChange}
                     />
                     {errors.district && <p className="error">{errors.district}</p>}
                   </div>
@@ -147,6 +157,7 @@ class App extends Component {
                       label="City"
                       class="footer-city form-control"
                       value={this.state.city}
+                      onChange={this.onChange}
                     />
                     {errors.city && <p className="error">{errors.city}</p>}
                   </div>
